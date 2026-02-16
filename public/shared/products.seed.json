@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "NovaPhone X",
+    "description": "6.5-inch display, 128GB storage, dual camera.",
+    "price": 699.99,
+    "stock": 35,
+    "categoryId": 1,
+    "imageUrl": "https://picsum.photos/seed/novaphonex/400/400"
+  },
+  {
+    "id": 2,
+    "name": "NovaBook Air",
+    "description": "Lightweight laptop for students and daily work.",
+    "price": 1099.0,
+    "stock": 18,
+    "categoryId": 1,
+    "imageUrl": "https://picsum.photos/seed/novabookair/400/400"
+  },
+  {
+    "id": 3,
+    "name": "Wireless Earbuds S",
+    "description": "Noise-isolating earbuds with charging case.",
+    "price": 89.5,
+    "stock": 60,
+    "categoryId": 1,
+    "imageUrl": "https://picsum.photos/seed/earbudss/400/400"
+  },
+  {
+    "id": 4,
+    "name": "Smart Blender Pro",
+    "description": "Multi-speed blender with pulse mode.",
+    "price": 129.9,
+    "stock": 22,
+    "categoryId": 2,
+    "imageUrl": "https://picsum.photos/seed/smartblenderpro/400/400"
+  },
+  {
+    "id": 5,
+    "name": "Ceramic Dinner Set",
+    "description": "16-piece dinner set for 4 people.",
+    "price": 74.25,
+    "stock": 40,
+    "categoryId": 2,
+    "imageUrl": "https://picsum.photos/seed/ceramicset/400/400"
+  },
+  {
+    "id": 6,
+    "name": "Minimal Desk Lamp",
+    "description": "Adjustable LED desk lamp with warm/cool modes.",
+    "price": 39.99,
+    "stock": 55,
+    "categoryId": 2,
+    "imageUrl": "https://picsum.photos/seed/desklamp/400/400"
+  },
+  {
+    "id": 7,
+    "name": "Classic Denim Jacket",
+    "description": "Unisex denim jacket in regular fit.",
+    "price": 64.0,
+    "stock": 28,
+    "categoryId": 3,
+    "imageUrl": "https://picsum.photos/seed/denimjacket/400/400"
+  },
+  {
+    "id": 8,
+    "name": "Running Sneakers",
+    "description": "Breathable sneakers designed for daily runs.",
+    "price": 119.95,
+    "stock": 47,
+    "categoryId": 3,
+    "imageUrl": "https://picsum.photos/seed/runningsneakers/400/400"
+  },
+  {
+    "id": 9,
+    "name": "Clean Code Handbook",
+    "description": "Practical software craftsmanship guide.",
+    "price": 44.5,
+    "stock": 80,
+    "categoryId": 4,
+    "imageUrl": "https://picsum.photos/seed/cleancode/400/400"
+  },
+  {
+    "id": 10,
+    "name": "UI Design Fundamentals",
+    "description": "Beginner-friendly visual design principles.",
+    "price": 36.75,
+    "stock": 33,
+    "categoryId": 4,
+    "imageUrl": "https://picsum.photos/seed/uidesign/400/400"
+  },
+  {
+    "id": 11,
+    "name": "Yoga Mat Flex",
+    "description": "Non-slip mat with carrying strap.",
+    "price": 29.99,
+    "stock": 70,
+    "categoryId": 5,
+    "imageUrl": "https://picsum.photos/seed/yogamat/400/400"
+  },
+  {
+    "id": 12,
+    "name": "Adjustable Dumbbell 20kg",
+    "description": "Compact adjustable dumbbell for home training.",
+    "price": 199.0,
+    "stock": 14,
+    "categoryId": 5,
+    "imageUrl": "https://picsum.photos/seed/dumbbell20/400/400"
+  }
+]

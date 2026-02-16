@@ -1,32 +1,63 @@
-# Netlify Remix Template
+# NovaStore Web Admin (Remix + Netlify)
 
-Welcome to the Netlify Remix Template project. If you were expecting this to be your site, run `remix init` in the root of this project to get started.
+Web admin CRUD app for NovaStore.
 
-To use the template, run
+## Tech
+- Remix (Vite) + TypeScript
+- Tailwind CSS
+- Netlify Remix adapter
+- Cookie session auth (Remix `createCookieSessionStorage`)
+- LocalStorage for catalog persistence
 
+## Routes
+- `/login`
+- `/signup`
+- `/logout` (POST only)
+- `/dashboard`
+- `/products/new`
+- `/products/:id/edit`
+- `/settings`
+
+## Feature Summary
+- Product CRUD with validation
+- Create custom categories while adding/editing products
+- Search/filter/sort
+- Authentication + authorization guards for protected routes
+- Editable profile/settings page (saved in browser localStorage)
+- Theme mode switch: light/dark/system
+- Language switch: English/Turkish
+- JSON import/export with schema checks
+- Toast notifications
+
+## Auth Setup
 ```bash
-npx create-remix@latest --template netlify/remix-template
+cp .env.example .env
 ```
 
-This project includes:
+Set these variables in `.env`:
+- `SESSION_SECRET`
+- `ADMIN_EMAIL`
+- `ADMIN_PASSWORD`
 
-- Netlify Functions template for Remix sites
-- Netlify Edge Functions template for Remix sites
+Default local demo credentials (if env vars are omitted):
+- `admin@novastore.com`
+- `admin123`
 
-From the `create-remix` command, you may pass `--netlify-edge` or `--no-netlify-edge` to generate a template that uses Netlify Edge or Serverless functions explicitly. Without passing this option, the create workflow will ask you which you would prefer.
+Signup behavior:
+- `/signup` creates a `viewer` account.
+- Viewer accounts are stored in a signed HttpOnly cookie for demo purposes (browser-local, no external DB).
+- Viewer role is read-only on dashboard and cannot access product create/edit or settings pages.
 
-## Development
-
-There is no need to run `npm install` as this is a template. The Remix CLI will install the dependencies for you. Make changes to files as you see fit. If there are transformations for files for either the Netlify Functions or Netlify Edge Functions template, make the appropriate changes to the `remix.init/index.js` file.
-
-If you're new to Remix stacks and the remix.init concept, see the official [Remix Stacks](https://remix.run/stacks) documentation.
-
-### Testing your changes
-
-Run
-
+## Run
 ```bash
-npx create-remix@latest --template ./remix-template
+npm install
+npm run dev
+npm run build
 ```
 
-to test your changes to the template. Follow the steps the Remix CLI prompts you with to create a new project. Ensure to test for both the Netlify Functions template and the Netlify Edge Functions template.
+## Seed Data
+First-run seed files are served from:
+- `public/shared/categories.seed.json`
+- `public/shared/products.seed.json`
+
+These are aligned with root-level `../shared/*.seed.json`.
