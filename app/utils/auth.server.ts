@@ -13,8 +13,30 @@ import {
 
 const USER_SESSION_KEY = "user";
 const ONE_WEEK_IN_SECONDS = 60 * 60 * 24 * 7;
-const PASSWORD_PEPPER =
-  process.env.SESSION_SECRET;
+
+const getServerAuthEnv = () => {
+  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+  const SESSION_SECRET = process.env.SESSION_SECRET;
+
+  if (typeof ADMIN_EMAIL !== "string" || ADMIN_EMAIL.trim() === "") {
+    throw new Error("Missing required environment variable: ADMIN_EMAIL");
+  }
+
+  if (typeof ADMIN_PASSWORD !== "string" || ADMIN_PASSWORD.trim() === "") {
+    throw new Error("Missing required environment variable: ADMIN_PASSWORD");
+  }
+
+  if (typeof SESSION_SECRET !== "string" || SESSION_SECRET.trim() === "") {
+    throw new Error("Missing required environment variable: SESSION_SECRET");
+  }
+
+  return {
+    adminEmail: ADMIN_EMAIL.trim().toLowerCase(),
+    adminPassword: ADMIN_PASSWORD,
+    sessionSecret: SESSION_SECRET,
+  };
+};
 
 interface RequireUserOptions {
   role?: UserRole;
@@ -80,8 +102,10 @@ const isStoredViewerUser = (value: unknown): value is StoredViewerUser => {
 const normalizeEmail = (email: string): string => email.trim().toLowerCase();
 
 const hashPassword = (email: string, password: string): string => {
+  const { sessionSecret } = getServerAuthEnv();
+
   return createHash("sha256")
-    .update(`${PASSWORD_PEPPER}:${email}:${password}`)
+    .update(`${sessionSecret}:${email}:${password}`)
     .digest("hex");
 };
 
@@ -98,11 +122,9 @@ const parseStoredViewerUsers = async (
 };
 
 const getAdminCredentials = () => {
-  const email =
-    (process.env.ADMIN_EMAIL ?? "admin@novastore.com").trim().toLowerCase();
-  const password = process.env.ADMIN_PASSWORD ?? "admin123";
+  const { adminEmail, adminPassword } = getServerAuthEnv();
 
-  return { email, password };
+  return { email: adminEmail, password: adminPassword };
 };
 
 const createSessionResponse = async ({

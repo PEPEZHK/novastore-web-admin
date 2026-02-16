@@ -9,8 +9,17 @@ interface SessionFlashData {
   error: string;
 }
 
-const devSecret = "novastore-dev-session-secret-change-me";
-const sessionSecret = process.env.SESSION_SECRET ?? devSecret;
+const getRequiredSessionSecret = (): string => {
+  const value = process.env.SESSION_SECRET;
+
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error("Missing required environment variable: SESSION_SECRET");
+  }
+
+  return value;
+};
+
+const sessionSecret = getRequiredSessionSecret();
 const THIRTY_DAYS_IN_SECONDS = 60 * 60 * 24 * 30;
 
 export const sessionStorage = createCookieSessionStorage<
