@@ -14,7 +14,7 @@ import {
 const USER_SESSION_KEY = "user";
 const ONE_WEEK_IN_SECONDS = 60 * 60 * 24 * 7;
 const PASSWORD_PEPPER =
-  process.env.SESSION_SECRET ?? "novastore-dev-session-secret-change-me";
+  process.env.SESSION_SECRET;
 
 interface RequireUserOptions {
   role?: UserRole;
